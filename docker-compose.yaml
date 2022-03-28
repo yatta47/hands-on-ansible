@@ -1,0 +1,31 @@
+version: "3"
+
+networks:
+  ansible:
+
+services:
+  ansible:
+    image: handson-ansible:latest
+    container_name: ansible
+    hostname: ansible
+    tty: true
+    networks:
+      - ansible
+    volumes:
+      - './ansible:/root/ansible'
+
+  node01:
+    image: handson-node:latest
+    container_name: node01
+    hostname: node01
+    tty: true
+    networks:
+      - ansible
+
+  node02:
+    image: handson-node:latest
+    container_name: node02
+    hostname: node02
+    tty: true
+    networks:
+      - ansible
